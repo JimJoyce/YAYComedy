@@ -40,8 +40,9 @@
     [self setColor:colorIndex];
     NSString *sourceString = [NSString stringWithFormat:@"via: %@",
                               [articleObject valueForKey:@"source"]];
-    self.titleLabel.text = [articleObject valueForKey:@"title"];
-
+    NSString *string = [[articleObject valueForKey:@"title"]
+                        stringByReplacingPercentEscapesUsingEncoding:NSUTF16StringEncoding];
+    self.titleLabel.text = string;
     self.sourceLabel.text = sourceString;
 }
 

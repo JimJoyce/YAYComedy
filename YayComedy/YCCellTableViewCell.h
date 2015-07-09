@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface YCCellTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sourceLabel;
 
 @property(strong, nonatomic)NSString *title;
 @property(strong, nonatomic)NSString *date;
 @property(strong, nonatomic)NSString *articleUrl;
 @property(strong, nonatomic)NSString *source;
+-(void)configureCell:(NSUInteger)colorIndex withJson:(NSDictionary *)articleObject;
 
 @end

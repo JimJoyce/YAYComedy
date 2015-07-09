@@ -9,9 +9,12 @@
 #import "YCListViewControllerTableViewController.h"
 #import "YCCellTableViewCell.h"
 #import "YCApi.h"
+#import "YCReaderViewController.h"
 
 @interface YCListViewControllerTableViewController () {
     YCApi *api;
+    NSUInteger colorIndex;
+    BOOL goingUp;
 }
 
 @end
@@ -20,6 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    colorIndex = 0;
+    goingUp = TRUE;
     api = [[YCApi alloc]initWithArticles:self.tableView];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -47,19 +52,27 @@
     return api.articles.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 150.0f;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return 150.0f;
+//}
 
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     YCCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.textLabel.text = [[api.articles objectAtIndex:indexPath.row] valueForKey:@"title"];
-    
+    [cell configureCell:[self checkColorIndex]
+               withJson:[api.articles objectAtIndex:indexPath.row]];
     return cell;
 }
 
+-(NSUInteger)checkColorIndex {
+    colorIndex += 1;
+    if (colorIndex == 4) {
+        colorIndex = 0;
+        return 4;
+    }
+    return colorIndex;
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -95,14 +108,22 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"webViewSegue"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        YCCellTableViewCell *cell = sender;
+        UINavigationController *navigationController = segue.destinationViewController;
+        YCReaderViewController *dvc = (YCReaderViewController *)navigationController.topViewController;
+        
+        dvc.articleUrl = [[api.articles objectAtIndex:indexPath.row] valueForKey:@"article_link"];
+        dvc.sourceText = [[api.articles objectAtIndex:indexPath.row] valueForKey:@"source"];
+    }
 }
-*/
+
 
 @end

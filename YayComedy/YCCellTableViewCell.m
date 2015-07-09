@@ -7,6 +7,7 @@
 //
 
 #import "YCCellTableViewCell.h"
+#import "UIColor+Colors.h"
 
 @interface YCCellTableViewCell() {
     NSArray *colors;
@@ -18,16 +19,14 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    colors = @[[UIColor colorWithRed:233.0f/255.0f green:101.0f/255.0f blue:99.0f/255.0f alpha:1.0f],
-               [UIColor colorWithRed:46.0f/255.0f green:162.0f/255.0f blue:211.0f/255.0f alpha:1.0f],
-               [UIColor colorWithRed:254.0f/255.0f green:241.0f/255.0f blue:1.0f/255.0f alpha:1.0f],
-               [UIColor colorWithRed:4.0f/255.0f green:22.0f/255.0f blue:32.0f/255.0f alpha:1.0f],
-               [UIColor colorWithRed:65.0f/255.0f green:148.0f/255.0f blue:144.0f/255.0f alpha:1.0f]];
-    
-    self.backgroundColor = [colors objectAtIndex: (arc4random() % 4)];
-    self.textLabel.textColor = [UIColor whiteColor];
-//    self.titleLabel.font = [UIFont fontWithName:@"LoveloBlack" size:18];
-//    self.dateLabel.font = [UIFont fontWithName:@"LoveloBlack" size:10];
+    colors = @[[UIColor yayLightRed],
+               [UIColor yayLightBlue],
+               [UIColor yayDarkBlue],
+               [UIColor yayYellow],
+               [UIColor yayTurquoise]];
+
+    self.titleLabel.font = [UIFont fontWithName:@"LoveloBlack" size:18];
+    self.sourceLabel.font = [UIFont fontWithName:@"LoveloBlack" size:12];
     
 }
 
@@ -37,8 +36,24 @@
     // Configure the view for the selected state
 }
 
--(void)configureCell:(NSUInteger)object{
-//    self.textLabel.text = ;
+-(void)configureCell:(NSUInteger)colorIndex withJson:(NSDictionary *)articleObject{
+    [self setColor:colorIndex];
+    NSString *sourceString = [NSString stringWithFormat:@"via: %@",
+                              [articleObject valueForKey:@"source"]];
+    self.titleLabel.text = [articleObject valueForKey:@"title"];
+
+    self.sourceLabel.text = sourceString;
+}
+
+-(void)setColor:(NSUInteger)colorIndex {
+    self.backgroundColor = [colors objectAtIndex:colorIndex];
+    if (self.backgroundColor == [colors objectAtIndex:3]) {
+        self.titleLabel.textColor = [UIColor blackColor];
+        self.sourceLabel.textColor = [UIColor blackColor];
+    } else {
+        self.titleLabel.textColor = [UIColor whiteColor];
+        self.sourceLabel.textColor = [UIColor whiteColor];
+    }
 }
 
 @end

@@ -10,11 +10,14 @@
 #import "YCCellTableViewCell.h"
 #import "YCApi.h"
 #import "YCReaderViewController.h"
+#import "NSString+HTML.h"
 
-@interface YCListViewControllerTableViewController () {
+@interface YCListViewControllerTableViewController ()<UIScrollViewDelegate> {
     YCApi *api;
     NSUInteger colorIndex;
     BOOL goingUp;
+    UIButton *settingsIcon;
+    UIImage *settingsImage;
 }
 
 @end
@@ -23,17 +26,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    colorIndex = 0;
+    colorIndex = -1;
     goingUp = TRUE;
     api = [[YCApi alloc]initWithArticles:self.tableView];
+    settingsImage = [UIImage imageNamed:@"settings.png"];
+    
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    CGRect settingsPos = CGRectMake(0.0,0.0,
+                                    settingsImage.size.width/2,
+                                    settingsImage.size.height/2);
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    settingsIcon = [[UIButton alloc]initWithFrame:settingsPos];
+    [settingsIcon setBackgroundImage:settingsImage forState:UIControlStateNormal];
+    [self.tableView addSubview:settingsIcon];
+    [self.tableView addObserver:self
+                     forKeyPath:@"frame"
+                        options:0
+                        context:NULL];
+    settingsIcon.alpha = 0.8;
+    [settingsIcon addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+
+-(void)openSettings {
+    NSLog(@"tapped");
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -68,11 +87,33 @@
 -(NSUInteger)checkColorIndex {
     colorIndex += 1;
     if (colorIndex == 4) {
-        colorIndex = 0;
+        colorIndex = -1;
         return 4;
     }
     return colorIndex;
 }
+
+
+#pragma scrollview methods
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self adjustSettingsViewOffest];
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+                       change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"frame"]) {
+        [self adjustSettingsViewOffest];
+    }
+}
+
+-(void)adjustSettingsViewOffest {
+    CGRect updateFrame = settingsIcon.frame;
+    updateFrame.origin.x = self.view.bounds.size.width * .8;
+    updateFrame.origin.y = self.tableView.contentOffset.y + (self.view.bounds.size.height * .98) - CGRectGetHeight(settingsIcon.bounds);
+    settingsIcon.frame = updateFrame;
+    [self.tableView bringSubviewToFront:settingsIcon];
+}
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -119,7 +160,7 @@
         YCCellTableViewCell *cell = sender;
         UINavigationController *navigationController = segue.destinationViewController;
         YCReaderViewController *dvc = (YCReaderViewController *)navigationController.topViewController;
-        
+        dvc.barColor = cell.backgroundColor;
         dvc.articleUrl = [[api.articles objectAtIndex:indexPath.row] valueForKey:@"article_link"];
         dvc.sourceText = [[api.articles objectAtIndex:indexPath.row] valueForKey:@"source"];
     }

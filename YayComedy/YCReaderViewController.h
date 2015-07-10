@@ -11,6 +11,8 @@
 @interface YCReaderViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
+@property(strong, nonatomic)UIColor *barColor;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *closeButton;
 
 @property (strong, nonatomic) NSString *sourceText;
 @property (strong, nonatomic) NSString *articleUrl;

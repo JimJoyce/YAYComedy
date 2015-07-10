@@ -17,6 +17,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    UINavigationBar *navBarAppearance = [UINavigationBar appearance];
+    UIFont *mainFont = [UIFont fontWithName:@"LoveloBlack" size:25.0f];
+    
+    [navBarAppearance setTitleTextAttributes:@{NSFontAttributeName : mainFont,
+                                               NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    
 
     return YES;
 }

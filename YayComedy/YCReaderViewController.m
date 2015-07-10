@@ -18,6 +18,8 @@
     [super viewDidLoad];
     [self.webView setDelegate:self];
     self.webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
+    [self.navigationController.navigationBar setBarTintColor:self.barColor];
+    self.closeButton.tintColor = [UIColor whiteColor];
     self.navBar.title = self.sourceText;
     [self checkSource];
 }

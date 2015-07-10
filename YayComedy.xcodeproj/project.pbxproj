@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC7690F41B4F22A700553053 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7690F31B4F22A700553053 /* NSString+HTML.m */; };
+		CC7690F71B4F238E00553053 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7690F61B4F238E00553053 /* GTMNSString+HTML.m */; };
 		CCA9D8791B476CD0003C6E49 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9D8781B476CD0003C6E49 /* main.m */; };
 		CCA9D87C1B476CD0003C6E49 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9D87B1B476CD0003C6E49 /* AppDelegate.m */; };
 		CCA9D87F1B476CD0003C6E49 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9D87E1B476CD0003C6E49 /* ViewController.m */; };
@@ -52,6 +54,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC7690F21B4F22A700553053 /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
+		CC7690F31B4F22A700553053 /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
+		CC7690F51B4F238E00553053 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
+		CC7690F61B4F238E00553053 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
 		CCA9D8731B476CD0003C6E49 /* YayComedy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YayComedy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA9D8771B476CD0003C6E49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCA9D8781B476CD0003C6E49 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -259,6 +265,10 @@
 				CCA9D8B01B476D75003C6E49 /* UIKit+AFNetworking */,
 				CCDFC1CA1B4DDE4A00991651 /* UIColor+Colors.h */,
 				CCDFC1CB1B4DDE4A00991651 /* UIColor+Colors.m */,
+				CC7690F21B4F22A700553053 /* NSString+HTML.h */,
+				CC7690F31B4F22A700553053 /* NSString+HTML.m */,
+				CC7690F51B4F238E00553053 /* GTMNSString+HTML.h */,
+				CC7690F61B4F238E00553053 /* GTMNSString+HTML.m */,
 				CCDFC1CD1B4DF11300991651 /* Lovelo Black.otf */,
 				CCDFC1CE1B4DF11300991651 /* Lovelo Line Bold.otf */,
 				CCDFC1CF1B4DF11300991651 /* Lovelo Line Light.otf */,
@@ -371,6 +381,7 @@
 			files = (
 				CCA9D8DB1B477133003C6E49 /* YCCellTableViewCell.m in Sources */,
 				CCA9D8C21B476D75003C6E49 /* AFHTTPRequestOperation.m in Sources */,
+				CC7690F71B4F238E00553053 /* GTMNSString+HTML.m in Sources */,
 				CCA9D8CF1B476D75003C6E49 /* UIImageView+AFNetworking.m in Sources */,
 				CCA9D87F1B476CD0003C6E49 /* ViewController.m in Sources */,
 				CCDFC1D61B4DF93900991651 /* YCReaderViewController.m in Sources */,
@@ -387,6 +398,7 @@
 				CCA9D8D11B476D75003C6E49 /* UIRefreshControl+AFNetworking.m in Sources */,
 				CCA9D8D21B476D75003C6E49 /* UIWebView+AFNetworking.m in Sources */,
 				CCA9D8C41B476D75003C6E49 /* AFHTTPSessionManager.m in Sources */,
+				CC7690F41B4F22A700553053 /* NSString+HTML.m in Sources */,
 				CCA9D8CD1B476D75003C6E49 /* UIAlertView+AFNetworking.m in Sources */,
 				CCA9D8C81B476D75003C6E49 /* AFURLRequestSerialization.m in Sources */,
 				CCA9D8CB1B476D75003C6E49 /* AFNetworkActivityIndicatorManager.m in Sources */,

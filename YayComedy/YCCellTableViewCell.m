@@ -8,6 +8,7 @@
 
 #import "YCCellTableViewCell.h"
 #import "UIColor+Colors.h"
+#import "NSString+HTML.h"
 
 @interface YCCellTableViewCell() {
     NSArray *colors;
@@ -40,8 +41,7 @@
     [self setColor:colorIndex];
     NSString *sourceString = [NSString stringWithFormat:@"via: %@",
                               [articleObject valueForKey:@"source"]];
-    NSString *string = [[articleObject valueForKey:@"title"]
-                        stringByReplacingPercentEscapesUsingEncoding:NSUTF16StringEncoding];
+    NSString *string = [[articleObject valueForKey:@"title"] stringByDecodingHTMLEntities];
     self.titleLabel.text = string;
     self.sourceLabel.text = sourceString;
 }

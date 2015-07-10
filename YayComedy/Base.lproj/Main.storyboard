@@ -25,7 +25,7 @@
                                                 <constraint firstAttribute="width" constant="107" id="SXC-Jr-Sqk"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6k-eB-A5h">
@@ -34,7 +34,7 @@
                                                 <constraint firstAttribute="height" constant="53" id="rrd-X2-w0I"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -90,13 +90,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Xf5-yo-qin">
-                        <barButtonItem key="leftBarButtonItem" title="X" id="3uF-Wr-7CQ">
+                        <barButtonItem key="leftBarButtonItem" image="close_button" style="plain" id="sBD-fB-BzI">
+                            <inset key="imageInsets" minX="2" minY="2" maxX="3" maxY="2"/>
                             <connections>
-                                <action selector="closeReader:" destination="5bv-ls-JiO" id="WsG-KD-boa"/>
+                                <action selector="closeReader:" destination="5bv-ls-JiO" id="fI6-jL-lPt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="closeButton" destination="sBD-fB-BzI" id="FqR-X0-ag9"/>
                         <outlet property="navBar" destination="Xf5-yo-qin" id="tdC-LY-4Q6"/>
                         <outlet property="webView" destination="NTJ-hO-7oZ" id="MHx-S1-f7i"/>
                     </connections>
@@ -124,4 +126,7 @@
             <point key="canvasLocation" x="540" y="368"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="close_button" width="40" height="40"/>
+    </resources>
 </document>

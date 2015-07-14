@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC47E68E1B5495B5006E6E2B /* YCSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC47E68D1B5495B5006E6E2B /* YCSettingsView.m */; };
 		CC7690F41B4F22A700553053 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7690F31B4F22A700553053 /* NSString+HTML.m */; };
 		CC7690F71B4F238E00553053 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7690F61B4F238E00553053 /* GTMNSString+HTML.m */; };
 		CCA9D8791B476CD0003C6E49 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9D8781B476CD0003C6E49 /* main.m */; };
@@ -54,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC47E68C1B5495B5006E6E2B /* YCSettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCSettingsView.h; sourceTree = "<group>"; };
+		CC47E68D1B5495B5006E6E2B /* YCSettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCSettingsView.m; sourceTree = "<group>"; };
 		CC7690F21B4F22A700553053 /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
 		CC7690F31B4F22A700553053 /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
 		CC7690F51B4F238E00553053 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
@@ -164,6 +167,8 @@
 				CCDFC1D01B4DF11700991651 /* Resources */,
 				CCA9D8D61B476E59003C6E49 /* YCApi.h */,
 				CCA9D8D71B476E59003C6E49 /* YCApi.m */,
+				CC47E68C1B5495B5006E6E2B /* YCSettingsView.h */,
+				CC47E68D1B5495B5006E6E2B /* YCSettingsView.m */,
 				CCA9D8D91B477133003C6E49 /* YCCellTableViewCell.h */,
 				CCA9D8DA1B477133003C6E49 /* YCCellTableViewCell.m */,
 				CCA9D8D31B476DA8003C6E49 /* YCListViewControllerTableViewController.h */,
@@ -381,6 +386,7 @@
 			files = (
 				CCA9D8DB1B477133003C6E49 /* YCCellTableViewCell.m in Sources */,
 				CCA9D8C21B476D75003C6E49 /* AFHTTPRequestOperation.m in Sources */,
+				CC47E68E1B5495B5006E6E2B /* YCSettingsView.m in Sources */,
 				CC7690F71B4F238E00553053 /* GTMNSString+HTML.m in Sources */,
 				CCA9D8CF1B476D75003C6E49 /* UIImageView+AFNetworking.m in Sources */,
 				CCA9D87F1B476CD0003C6E49 /* ViewController.m in Sources */,

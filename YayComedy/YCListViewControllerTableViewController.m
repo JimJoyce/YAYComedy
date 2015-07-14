@@ -11,13 +11,17 @@
 #import "YCApi.h"
 #import "YCReaderViewController.h"
 #import "NSString+HTML.h"
+#import "YCSettingsView.h"
 
-@interface YCListViewControllerTableViewController ()<UIScrollViewDelegate> {
+@interface YCListViewControllerTableViewController () <UIScrollViewDelegate> {
     YCApi *api;
     NSUInteger colorIndex;
     BOOL goingUp;
     UIButton *settingsIcon;
     UIImage *settingsImage;
+    YCSettingsView *settingsPane;
+    UIView *darkenView;
+    UIButton *closeSettingsButton;
 }
 
 @end
@@ -50,9 +54,53 @@
 
 
 -(void)openSettings {
-    NSLog(@"tapped");
+    CGRect settingsFrame = CGRectMake(0, 0,
+                                      CGRectGetWidth(self.view.frame) * 0.80,
+                                      CGRectGetHeight(self.view.frame) * 0.80);
+    settingsFrame.origin.x = CGRectGetMidX(self.view.frame) * 0.20;
+    settingsFrame.origin.y = CGRectGetMidY(self.view.frame) * 0.20;
+    settingsPane = [[YCSettingsView alloc]initWithFrame: settingsFrame];
+    [settingsPane setUserInteractionEnabled:YES];
+    [self.tableView setScrollEnabled:NO];
+    closeSettingsButton = [[UIButton alloc]initWithFrame:CGRectMake(
+                                                                    CGRectGetMidX(self.view.frame) - 20.0f, CGRectGetMaxY(self.view.frame) * 0.925, 40.0f, 40.0f)];
+    [closeSettingsButton setBackgroundImage:[UIImage imageNamed:@"close_button"]
+                                   forState:UIControlStateNormal];
+    closeSettingsButton.alpha = 0.0;
+    [closeSettingsButton addTarget:self action:@selector(closeSettings) forControlEvents:UIControlEventTouchUpInside];
+    darkenView = [[UIView alloc]initWithFrame:self.tableView.frame];
+    darkenView.backgroundColor = [UIColor blackColor];
+    darkenView.alpha = 0.0;
+    [self.view.window addSubview:darkenView];
+    [darkenView addSubview:closeSettingsButton];
+    [self.view.window addSubview:settingsPane];
+    [self fadeInSettings];
 }
 
+-(void)closeSettings {
+    [UIView animateWithDuration:0.5 animations:^{
+        settingsPane.alpha = 0.0f;
+        darkenView.alpha = 0.0f;
+        closeSettingsButton.alpha = 0.0f;
+        settingsIcon.alpha = 1.0f;
+    } completion:^(BOOL finished) {
+        [settingsPane removeFromSuperview];
+        [closeSettingsButton removeFromSuperview];
+        [darkenView removeFromSuperview];
+        [self.tableView setScrollEnabled:YES];
+    }];
+}
+
+-(void)fadeInSettings {
+    [UIView animateWithDuration:0.5 animations:^{
+        [settingsPane setTransform:CGAffineTransformMakeScale(1.0f, 1.0f)];
+        [self.view bringSubviewToFront:settingsPane];
+        settingsIcon.alpha = 0.0;
+        darkenView.alpha = 0.8;
+        settingsPane.alpha = 1.0;
+        closeSettingsButton.alpha = 1.0;
+    }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

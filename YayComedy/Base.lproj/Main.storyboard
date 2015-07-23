@@ -100,7 +100,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Xf5-yo-qin">
-                        <barButtonItem key="leftBarButtonItem" image="close_button" style="plain" id="sBD-fB-BzI">
+                        <barButtonItem key="leftBarButtonItem" image="close_button" style="done" id="sBD-fB-BzI">
                             <inset key="imageInsets" minX="2" minY="2" maxX="3" maxY="2"/>
                             <connections>
                                 <action selector="closeReader:" destination="5bv-ls-JiO" id="fI6-jL-lPt"/>

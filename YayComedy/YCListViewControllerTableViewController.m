@@ -209,7 +209,7 @@
 #pragma mark - Refresh Control
 
 - (IBAction)refresh:(id)sender {
-    [self.tableView reloadData];
+    [api fetchArticles:self.tableView];
     [sender endRefreshing];
 }
 

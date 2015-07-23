@@ -22,6 +22,8 @@
     YCSettingsView *settingsPane;
     UIView *darkenView;
     UIButton *closeSettingsButton;
+    
+    __weak IBOutlet UIRefreshControl *refresh;
 }
 
 @end
@@ -32,7 +34,8 @@
     [super viewDidLoad];
     colorIndex = -1;
     goingUp = TRUE;
-    api = [[YCApi alloc]initWithArticles:self.tableView];
+    api = [YCApi sharedInstance];
+    [api fetchArticles:self.tableView];
     settingsImage = [UIImage imageNamed:@"settings.png"];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -41,6 +44,8 @@
                                     settingsImage.size.height/2);
     
     settingsIcon = [[UIButton alloc]initWithFrame:settingsPos];
+    UIImageView *bgImageView = [[UIImageView alloc]initWithFrame:self.view.frame];
+    bgImageView.image = [UIImage imageNamed:@"splash.png"];
     [settingsIcon setBackgroundImage:settingsImage forState:UIControlStateNormal];
     [self.tableView addSubview:settingsIcon];
     [self.tableView addObserver:self
@@ -48,6 +53,10 @@
                         options:0
                         context:NULL];
     settingsIcon.alpha = 0.8;
+    self.refreshControl = refresh;
+    [self.refreshControl addSubview:bgImageView];
+    [self.refreshControl sendSubviewToBack:bgImageView];
+    self.refreshControl.tintColor = [UIColor whiteColor];
     [settingsIcon addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
     
 }
@@ -56,9 +65,9 @@
 -(void)openSettings {
     CGRect settingsFrame = CGRectMake(0, 0,
                                       CGRectGetWidth(self.view.frame) * 0.80,
-                                      CGRectGetHeight(self.view.frame) * 0.80);
+                                      CGRectGetHeight(self.view.frame) * 0.5);
     settingsFrame.origin.x = CGRectGetMidX(self.view.frame) * 0.20;
-    settingsFrame.origin.y = CGRectGetMidY(self.view.frame) * 0.20;
+    settingsFrame.origin.y = CGRectGetMidY(self.view.frame) * 0.50;
     settingsPane = [[YCSettingsView alloc]initWithFrame: settingsFrame];
     [settingsPane setUserInteractionEnabled:YES];
     [self.tableView setScrollEnabled:NO];
@@ -82,7 +91,7 @@
         settingsPane.alpha = 0.0f;
         darkenView.alpha = 0.0f;
         closeSettingsButton.alpha = 0.0f;
-        settingsIcon.alpha = 1.0f;
+        settingsIcon.alpha = 0.80f;
     } completion:^(BOOL finished) {
         [settingsPane removeFromSuperview];
         [closeSettingsButton removeFromSuperview];
@@ -156,7 +165,7 @@
 
 -(void)adjustSettingsViewOffest {
     CGRect updateFrame = settingsIcon.frame;
-    updateFrame.origin.x = self.view.bounds.size.width * .8;
+    updateFrame.origin.x = self.view.bounds.size.width * .85;
     updateFrame.origin.y = self.tableView.contentOffset.y + (self.view.bounds.size.height * .98) - CGRectGetHeight(settingsIcon.bounds);
     settingsIcon.frame = updateFrame;
     [self.tableView bringSubviewToFront:settingsIcon];
@@ -196,6 +205,14 @@
     return YES;
 }
 */
+
+#pragma mark - Refresh Control
+
+- (IBAction)refresh:(id)sender {
+    [self.tableView reloadData];
+    [sender endRefreshing];
+}
+
 
 
 #pragma mark - Navigation

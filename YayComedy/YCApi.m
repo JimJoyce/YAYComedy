@@ -13,18 +13,20 @@ static NSString * const apiUrl = @"https://yaycomedy.herokuapp.com/api/articles"
 
 @implementation YCApi
 
--(id)initWithArticles:(UITableView *)tableView {
-    self = [super init];
-    if (self) {
-        [self fetchArticles: tableView];
-    }
-    return self;
++ (YCApi *)sharedInstance {
+    static YCApi *instance;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[YCApi alloc]init];
+    });
+    return instance;
 }
 
 -(void)fetchArticles:(UITableView *)sender {
+    
     AFHTTPRequestOperationManager *requestManager = [AFHTTPRequestOperationManager manager];
     [requestManager GET:apiUrl parameters:NULL success:^(AFHTTPRequestOperation *successOperation, NSArray *responseObject) {
-        
         NSLog(@"Successful request");
         self.articles = responseObject;
         [sender reloadData];

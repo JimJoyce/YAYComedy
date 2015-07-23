@@ -13,5 +13,7 @@
 
 @property (strong, nonatomic) NSArray * articles;
 
--(id) initWithArticles:(UITableView *) tableView;
+-(void)fetchArticles:(UITableView *)sender;
+
++ (YCApi *)sharedInstance;
 @end

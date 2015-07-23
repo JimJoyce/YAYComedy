@@ -13,7 +13,7 @@
 +(UIColor *) yayLightRed;
 +(UIColor *) yayLightBlue;
 +(UIColor *) yayYellow;
-+(UIColor *) yayDarkBlue;
++(UIColor *) yayPurple;
 +(UIColor *) yayTurquoise;
 
 @end

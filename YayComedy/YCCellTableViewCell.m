@@ -22,7 +22,7 @@
     // Initialization code
     colors = @[[UIColor yayLightRed],
                [UIColor yayLightBlue],
-               [UIColor yayDarkBlue],
+               [UIColor yayPurple],
                [UIColor yayYellow],
                [UIColor yayTurquoise]];
 

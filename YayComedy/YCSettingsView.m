@@ -42,6 +42,7 @@
     self.tableView.separatorColor = [UIColor grayColor];
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
+    [self.tableView setScrollEnabled:NO];
     [self addSubview:self.tableView];
 }
 
@@ -82,11 +83,41 @@
 
 
 -(void)parseUserSelection:(NSUInteger)cellIndex {
-    NSLog(@"%lu", (unsigned long)cellIndex);
-    if (cellIndex == 0 || cellIndex == 1) {
-        //terms or privacy
-    } else {
-        //twitter or insta
+    switch (cellIndex) {
+        case 0:
+            //privacy
+            NSLog(@"privacy");
+            break;
+        case 1:
+            NSLog(@"terms");
+            //terms
+            break;
+        case 2:
+            if ([[UIApplication sharedApplication] canOpenURL:
+                 [NSURL URLWithString:@"twitter://user?screen_name=goyaycomedy"]])
+            {
+                [[UIApplication sharedApplication] openURL:
+                 [NSURL URLWithString: @"twitter://user?screen_name=goyaycomedy"]];
+                
+            } else
+            {
+                [[UIApplication sharedApplication] openURL:
+                 [NSURL URLWithString: @"https://twitter.com/goyaycomedy"]];
+            };
+            break;
+        case 3:
+            if ([[UIApplication sharedApplication] canOpenURL:
+                 [NSURL URLWithString:@"instagram://user?username=goyaycomedy"]])
+            {
+                [[UIApplication sharedApplication] openURL:
+                 [NSURL URLWithString: @"instagram://user?username=goyaycomedy"]];
+                
+            } else
+            {
+                [[UIApplication sharedApplication] openURL:
+                 [NSURL URLWithString: @"https://instagram.com/goyaycomedy"]];
+            };
+            break;
     }
 }
 /*

@@ -22,8 +22,8 @@
     return [UIColor colorWithRed:254.0f/255.0f green:241.0f/255.0f blue:1.0f/255.0f alpha:1.0f];
 }
 
-+ (UIColor *)yayDarkBlue {
-    return [UIColor colorWithRed:4.0f/255.0f green:22.0f/255.0f blue:32.0f/255.0f alpha:1.0f];
++ (UIColor *)yayPurple {
+    return [UIColor colorWithRed:84.0f/255.0f green:31.0f/255.0f blue:150.0f/255.0f alpha:1.0f];
 }
 
 + (UIColor *)yayTurquoise {

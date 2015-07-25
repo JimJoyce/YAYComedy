@@ -12,6 +12,7 @@
 #import "YCReaderViewController.h"
 #import "NSString+HTML.h"
 #import "YCSettingsView.h"
+#import "UIColor+Colors.h"
 
 @interface YCListViewControllerTableViewController () <UIScrollViewDelegate> {
     YCApi *api;
@@ -22,6 +23,8 @@
     YCSettingsView *settingsPane;
     UIView *darkenView;
     UIButton *closeSettingsButton;
+    UIColor *highlightedCellColor;
+    BOOL yellowSelected;
     
     __weak IBOutlet UIRefreshControl *refresh;
 }
@@ -138,6 +141,7 @@
     YCCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     [cell configureCell:[self checkColorIndex]
                withJson:[api.articles objectAtIndex:indexPath.row]];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
 
@@ -149,6 +153,34 @@
     }
     return colorIndex;
 }
+
+-(void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    YCCellTableViewCell *selectedCell = (YCCellTableViewCell *)[tableView
+                                                                cellForRowAtIndexPath:indexPath];
+    highlightedCellColor = selectedCell.backgroundColor;
+    selectedCell.backgroundColor = [UIColor colorWithRed:40/255.0f green:40/255.0f
+                                                    blue:40/255.0f alpha:1.0];
+    
+    if (selectedCell.backgroundColor == [UIColor yayYellow]) {
+        selectedCell.titleLabel.textColor = [UIColor whiteColor];
+    } else {
+        selectedCell.titleLabel.textColor = [UIColor colorWithWhite:.8 alpha:1.0];
+    }
+    
+}
+
+-(void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    YCCellTableViewCell *unSelectedCell = (YCCellTableViewCell *)[tableView
+                                                                cellForRowAtIndexPath:indexPath];
+    
+    if ([highlightedCellColor isEqual:[UIColor yayYellow]]) {
+        unSelectedCell.titleLabel.textColor = [UIColor blackColor];
+    } else {
+        unSelectedCell.titleLabel.textColor = [UIColor whiteColor];
+    }
+    unSelectedCell.backgroundColor = highlightedCellColor;
+}
+
 
 
 #pragma scrollview methods

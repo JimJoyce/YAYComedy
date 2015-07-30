@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ViewController.h"
-
+@class YCListViewControllerTableViewController;
 @interface YCApi : NSObject
 
 @property (strong, nonatomic) NSArray * articles;
 
--(void)fetchArticles:(UITableView *)sender;
+-(void)fetchArticles:(YCListViewControllerTableViewController *)sender;
 
 + (YCApi *)sharedInstance;
+
 @end

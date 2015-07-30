@@ -10,4 +10,6 @@
 
 @interface YCListViewControllerTableViewController : UITableViewController
 
+-(void)responseDone;
+
 @end

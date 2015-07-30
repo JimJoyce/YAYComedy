@@ -87,6 +87,10 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)showShareSheet:(id)sender {
+    UIActivityViewController *shareSheet = [[UIActivityViewController alloc]initWithActivityItems:@[] applicationActivities:nil];
+    [self presentViewController:shareSheet animated:YES completion:nil];
+}
 
 
 @end

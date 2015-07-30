@@ -7,6 +7,7 @@
 //
 
 #import "YCApi.h"
+#import "YCListViewControllerTableViewController.h"
 #import "AFNetworking.h"
 
 static NSString * const apiUrl = @"https://yaycomedy.herokuapp.com/api/articles";
@@ -15,7 +16,6 @@ static NSString * const apiUrl = @"https://yaycomedy.herokuapp.com/api/articles"
 
 + (YCApi *)sharedInstance {
     static YCApi *instance;
-    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[YCApi alloc]init];
@@ -23,18 +23,32 @@ static NSString * const apiUrl = @"https://yaycomedy.herokuapp.com/api/articles"
     return instance;
 }
 
--(void)fetchArticles:(UITableView *)sender {
+-(void)fetchArticles:(YCListViewControllerTableViewController *)sender {
     
     AFHTTPRequestOperationManager *requestManager = [AFHTTPRequestOperationManager manager];
     [requestManager GET:apiUrl parameters:NULL success:^(AFHTTPRequestOperation *successOperation, NSArray *responseObject) {
-        NSLog(@"Successful request");
         self.articles = responseObject;
-        [sender reloadData];
+        [sender responseDone];
+        [sender.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *failOperation, NSError *error) {
-        
-        NSLog(@"Response failed with %@", error);
-        
+        [self generateError:sender];
     }];
+}
+
+-(void)generateError:(YCListViewControllerTableViewController *)sender {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Server Error"
+                                                                    message:@"Sorry! Something went wrong. Tap okay to try again."
+                                                             preferredStyle:
+                                UIAlertControllerStyleAlert];
+    UIAlertAction *okayButton = [UIAlertAction actionWithTitle:@"Okay"
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction *action) {
+                                                            [self fetchArticles:sender];
+                                                        }];
+    [alert addAction:okayButton];
+    [sender presentViewController:alert
+                         animated:YES
+                       completion:nil];
 }
 
 @end

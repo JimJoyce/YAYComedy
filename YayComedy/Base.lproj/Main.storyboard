@@ -106,6 +106,11 @@
                                 <action selector="closeReader:" destination="5bv-ls-JiO" id="fI6-jL-lPt"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="ufK-ok-SLY">
+                            <connections>
+                                <action selector="showShareSheet:" destination="5bv-ls-JiO" id="3Wf-2u-dSf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="closeButton" destination="sBD-fB-BzI" id="FqR-X0-ag9"/>

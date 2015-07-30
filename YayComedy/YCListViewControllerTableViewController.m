@@ -25,6 +25,7 @@
     UIButton *closeSettingsButton;
     UIColor *highlightedCellColor;
     BOOL yellowSelected;
+    UIImageView *loadingView;
     
     __weak IBOutlet UIRefreshControl *refresh;
 }
@@ -38,8 +39,12 @@
     colorIndex = -1;
     goingUp = TRUE;
     api = [YCApi sharedInstance];
-    [api fetchArticles:self.tableView];
+    [api fetchArticles:self];
     settingsImage = [UIImage imageNamed:@"settings.png"];
+    
+    loadingView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"splash.png"]];
+    loadingView.frame = self.tableView.frame;
+    [self.tableView addSubview:loadingView];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     CGRect settingsPos = CGRectMake(0.0,0.0,
@@ -48,9 +53,9 @@
     
     settingsIcon = [[UIButton alloc]initWithFrame:settingsPos];
     UIImageView *bgImageView = [[UIImageView alloc]initWithFrame:self.view.frame];
-    bgImageView.image = [UIImage imageNamed:@"splash.png"];
+    bgImageView.image = [UIImage imageNamed:@"tableview_bg.png"];
     [settingsIcon setBackgroundImage:settingsImage forState:UIControlStateNormal];
-    [self.tableView addSubview:settingsIcon];
+    
     [self.tableView addObserver:self
                      forKeyPath:@"frame"
                         options:0
@@ -64,6 +69,13 @@
     
 }
 
+-(void)responseDone {
+    if (loadingView) {
+        [loadingView removeFromSuperview];
+        [self.tableView addSubview:settingsIcon];
+    }
+}
+
 
 -(void)openSettings {
     CGRect settingsFrame = CGRectMake(0, 0,
@@ -74,8 +86,10 @@
     settingsPane = [[YCSettingsView alloc]initWithFrame: settingsFrame];
     [settingsPane setUserInteractionEnabled:YES];
     [self.tableView setScrollEnabled:NO];
-    closeSettingsButton = [[UIButton alloc]initWithFrame:CGRectMake(
-                                                                    CGRectGetMidX(self.view.frame) - 20.0f, CGRectGetMaxY(self.view.frame) * 0.925, 40.0f, 40.0f)];
+    closeSettingsButton = [[UIButton alloc]initWithFrame:
+                           CGRectMake(CGRectGetMidX(self.view.frame) - 20.0f,
+                           CGRectGetMaxY(self.view.frame) * 0.825, 40.0f, 40.0f)];
+    
     [closeSettingsButton setBackgroundImage:[UIImage imageNamed:@"close_button"]
                                    forState:UIControlStateNormal];
     closeSettingsButton.alpha = 0.0;
@@ -88,6 +102,8 @@
     [self.view.window addSubview:settingsPane];
     [self fadeInSettings];
 }
+
+
 
 -(void)closeSettings {
     [UIView animateWithDuration:0.5 animations:^{
@@ -116,26 +132,17 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
     return api.articles.count;
 }
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 150.0f;
-//}
-
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     YCCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
@@ -203,45 +210,10 @@
     [self.tableView bringSubviewToFront:settingsIcon];
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Refresh Control
 
 - (IBAction)refresh:(id)sender {
-    [api fetchArticles:self.tableView];
+    [api fetchArticles:self];
     [sender endRefreshing];
 }
 

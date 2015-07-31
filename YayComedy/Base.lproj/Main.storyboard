@@ -101,7 +101,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Xf5-yo-qin">
                         <barButtonItem key="leftBarButtonItem" image="close_button" style="done" id="sBD-fB-BzI">
-                            <inset key="imageInsets" minX="2" minY="2" maxX="3" maxY="2"/>
+                            <inset key="imageInsets" minX="6" minY="6" maxX="7" maxY="6"/>
                             <connections>
                                 <action selector="closeReader:" destination="5bv-ls-JiO" id="fI6-jL-lPt"/>
                             </connections>
@@ -115,6 +115,7 @@
                     <connections>
                         <outlet property="closeButton" destination="sBD-fB-BzI" id="FqR-X0-ag9"/>
                         <outlet property="navBar" destination="Xf5-yo-qin" id="tdC-LY-4Q6"/>
+                        <outlet property="shareButton" destination="ufK-ok-SLY" id="HVC-bm-nyz"/>
                         <outlet property="webView" destination="NTJ-hO-7oZ" id="MHx-S1-f7i"/>
                     </connections>
                 </viewController>

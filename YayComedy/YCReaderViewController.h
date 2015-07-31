@@ -14,6 +14,8 @@
 @property(strong, nonatomic)UIColor *barColor;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *closeButton;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *shareButton;
+
 @property (strong, nonatomic) NSString *sourceText;
 @property (strong, nonatomic) NSString *articleUrl;
 

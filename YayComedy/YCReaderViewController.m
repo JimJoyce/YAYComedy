@@ -9,7 +9,9 @@
 #import "YCReaderViewController.h"
 #import "UIColor+Colors.h"
 
-@interface YCReaderViewController()<UIWebViewDelegate>
+@interface YCReaderViewController()<UIWebViewDelegate> {
+    UILabel *titleLabel;
+}
 
 @end
 
@@ -20,12 +22,30 @@
     [self.webView setDelegate:self];
     self.webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
     [self.navigationController.navigationBar setBarTintColor:self.barColor];
-    self.closeButton.tintColor = [UIColor whiteColor];
-    self.navBar.title = self.sourceText;
-    if (self.barColor == [UIColor yayYellow]) {
-        self.navBar.titleView.tintColor = [UIColor blackColor];
-    }
+    [self setUpTitleLabel];
+    [self setUpNavColors];
+    self.navigationItem.titleView = titleLabel;
     [self checkSource];
+}
+
+-(void)setUpNavColors {
+    if ([self.barColor isEqual:[UIColor yayYellow]]) {
+        titleLabel.textColor = [UIColor blackColor];
+        self.closeButton.tintColor = [UIColor blackColor];
+        self.shareButton.tintColor = [UIColor blackColor];
+    } else {
+        titleLabel.textColor = [UIColor whiteColor];
+        self.closeButton.tintColor = [UIColor whiteColor];
+        self.shareButton.tintColor = [UIColor whiteColor];
+    }
+}
+
+-(void)setUpTitleLabel {
+    titleLabel = [[UILabel alloc]initWithFrame:CGRectZero];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.font = [UIFont fontWithName:@"LoveloBlack" size:25.0f];
+    titleLabel.text = self.sourceText;
+    [titleLabel sizeToFit];
 }
 
 -(void)loadWebPage:(NSString *)url {

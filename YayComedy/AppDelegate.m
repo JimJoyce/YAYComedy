@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "YCApi.h"
 
 @interface AppDelegate ()
 
@@ -16,15 +17,22 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [self makeApiCall];
+    [self setUpAppearance];
+    return YES;
+}
+
+-(void)setUpAppearance {
     UINavigationBar *navBarAppearance = [UINavigationBar appearance];
     UIFont *mainFont = [UIFont fontWithName:@"LoveloBlack" size:25.0f];
     
     [navBarAppearance setTitleTextAttributes:@{NSFontAttributeName : mainFont,
                                                NSForegroundColorAttributeName: [UIColor whiteColor]}];
-    
+}
 
-    return YES;
+-(void)makeApiCall {
+    YCApi *api = [YCApi sharedInstance];
+    [api fetchArticles:(YCListViewController *)self.window.rootViewController];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

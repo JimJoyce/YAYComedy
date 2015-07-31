@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YCListViewControllerTableViewController : UITableViewController
+@interface YCListViewController : UITableViewController
 
 -(void)responseDone;
 

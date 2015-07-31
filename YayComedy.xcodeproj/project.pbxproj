@@ -33,7 +33,7 @@
 		CCA9D8D01B476D75003C6E49 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9D8BD1B476D75003C6E49 /* UIProgressView+AFNetworking.m */; };
 		CCA9D8D11B476D75003C6E49 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9D8BF1B476D75003C6E49 /* UIRefreshControl+AFNetworking.m */; };
 		CCA9D8D21B476D75003C6E49 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9D8C11B476D75003C6E49 /* UIWebView+AFNetworking.m */; };
-		CCA9D8D51B476DA8003C6E49 /* YCListViewControllerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9D8D41B476DA8003C6E49 /* YCListViewControllerTableViewController.m */; };
+		CCA9D8D51B476DA8003C6E49 /* YCListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9D8D41B476DA8003C6E49 /* YCListViewController.m */; };
 		CCA9D8D81B476E59003C6E49 /* YCApi.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9D8D71B476E59003C6E49 /* YCApi.m */; };
 		CCA9D8DB1B477133003C6E49 /* YCCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9D8DA1B477133003C6E49 /* YCCellTableViewCell.m */; };
 		CCDFC1CC1B4DDE4A00991651 /* UIColor+Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDFC1CB1B4DDE4A00991651 /* UIColor+Colors.m */; };
@@ -107,8 +107,8 @@
 		CCA9D8BF1B476D75003C6E49 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		CCA9D8C01B476D75003C6E49 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		CCA9D8C11B476D75003C6E49 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
-		CCA9D8D31B476DA8003C6E49 /* YCListViewControllerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCListViewControllerTableViewController.h; sourceTree = "<group>"; };
-		CCA9D8D41B476DA8003C6E49 /* YCListViewControllerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCListViewControllerTableViewController.m; sourceTree = "<group>"; };
+		CCA9D8D31B476DA8003C6E49 /* YCListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCListViewController.h; sourceTree = "<group>"; };
+		CCA9D8D41B476DA8003C6E49 /* YCListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCListViewController.m; sourceTree = "<group>"; };
 		CCA9D8D61B476E59003C6E49 /* YCApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCApi.h; sourceTree = "<group>"; };
 		CCA9D8D71B476E59003C6E49 /* YCApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCApi.m; sourceTree = "<group>"; };
 		CCA9D8D91B477133003C6E49 /* YCCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCCellTableViewCell.h; sourceTree = "<group>"; };
@@ -168,8 +168,8 @@
 				CC47E68D1B5495B5006E6E2B /* YCSettingsView.m */,
 				CCA9D8D91B477133003C6E49 /* YCCellTableViewCell.h */,
 				CCA9D8DA1B477133003C6E49 /* YCCellTableViewCell.m */,
-				CCA9D8D31B476DA8003C6E49 /* YCListViewControllerTableViewController.h */,
-				CCA9D8D41B476DA8003C6E49 /* YCListViewControllerTableViewController.m */,
+				CCA9D8D31B476DA8003C6E49 /* YCListViewController.h */,
+				CCA9D8D41B476DA8003C6E49 /* YCListViewController.m */,
 				CCDFC1D41B4DF93900991651 /* YCReaderViewController.h */,
 				CCDFC1D51B4DF93900991651 /* YCReaderViewController.m */,
 				CCA9D87A1B476CD0003C6E49 /* AppDelegate.h */,
@@ -387,7 +387,7 @@
 				CCA9D8CF1B476D75003C6E49 /* UIImageView+AFNetworking.m in Sources */,
 				CCDFC1D61B4DF93900991651 /* YCReaderViewController.m in Sources */,
 				CCA9D8C31B476D75003C6E49 /* AFHTTPRequestOperationManager.m in Sources */,
-				CCA9D8D51B476DA8003C6E49 /* YCListViewControllerTableViewController.m in Sources */,
+				CCA9D8D51B476DA8003C6E49 /* YCListViewController.m in Sources */,
 				CCA9D8D01B476D75003C6E49 /* UIProgressView+AFNetworking.m in Sources */,
 				CCA9D8C51B476D75003C6E49 /* AFNetworkReachabilityManager.m in Sources */,
 				CCA9D8C91B476D75003C6E49 /* AFURLResponseSerialization.m in Sources */,

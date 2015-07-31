@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--List View Controller Table View Controller-->
+        <!--List View Controller-->
         <scene sceneID="cfb-4d-RP5">
             <objects>
-                <tableViewController id="6o8-IY-e4D" customClass="YCListViewControllerTableViewController" sceneMemberID="viewController">
+                <tableViewController id="6o8-IY-e4D" customClass="YCListViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="138" sectionHeaderHeight="22" sectionFooterHeight="22" id="ohz-Jy-Dr4">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

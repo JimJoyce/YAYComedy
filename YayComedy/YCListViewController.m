@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Yay Comedy. All rights reserved.
 //
 
-#import "YCListViewControllerTableViewController.h"
+#import "YCListViewController.h"
 #import "YCCellTableViewCell.h"
 #import "YCApi.h"
 #import "YCReaderViewController.h"
@@ -14,10 +14,9 @@
 #import "YCSettingsView.h"
 #import "UIColor+Colors.h"
 
-@interface YCListViewControllerTableViewController () <UIScrollViewDelegate> {
+@interface YCListViewController () <UIScrollViewDelegate> {
     YCApi *api;
     NSUInteger colorIndex;
-    BOOL goingUp;
     UIButton *settingsIcon;
     UIImage *settingsImage;
     YCSettingsView *settingsPane;
@@ -32,41 +31,20 @@
 
 @end
 
-@implementation YCListViewControllerTableViewController
+@implementation YCListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setUpLoadingView];
     colorIndex = -1;
-    goingUp = TRUE;
     api = [YCApi sharedInstance];
-    [api fetchArticles:self];
-    settingsImage = [UIImage imageNamed:@"settings.png"];
-    
-    loadingView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"splash.png"]];
-    loadingView.frame = self.tableView.frame;
-    [self.tableView addSubview:loadingView];
-    
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    CGRect settingsPos = CGRectMake(0.0,0.0,
-                                    settingsImage.size.width/2,
-                                    settingsImage.size.height/2);
-    
-    settingsIcon = [[UIButton alloc]initWithFrame:settingsPos];
-    UIImageView *bgImageView = [[UIImageView alloc]initWithFrame:self.view.frame];
-    bgImageView.image = [UIImage imageNamed:@"tableview_bg.png"];
-    [settingsIcon setBackgroundImage:settingsImage forState:UIControlStateNormal];
-    
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self setUpRefreshControl];
+    [self setUpSettingsIcon];
     [self.tableView addObserver:self
                      forKeyPath:@"frame"
                         options:0
                         context:NULL];
-    settingsIcon.alpha = 0.8;
-    self.refreshControl = refresh;
-    [self.refreshControl addSubview:bgImageView];
-    [self.refreshControl sendSubviewToBack:bgImageView];
-    self.refreshControl.tintColor = [UIColor whiteColor];
-    [settingsIcon addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
-    
 }
 
 -(void)responseDone {
@@ -188,6 +166,37 @@
     unSelectedCell.backgroundColor = highlightedCellColor;
 }
 
+#pragma mark - view setups
+
+-(void)setUpSettingsIcon {
+    settingsImage = [UIImage imageNamed:@"settings.png"];
+    CGRect settingsPos = CGRectMake(0.0,0.0,
+                                    settingsImage.size.width/2,
+                                    settingsImage.size.height/2);
+    
+    settingsIcon = [[UIButton alloc]initWithFrame:settingsPos];
+    [settingsIcon setBackgroundImage:settingsImage forState:UIControlStateNormal];
+    settingsIcon.alpha = 0.8;
+    [settingsIcon addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)setUpLoadingView {
+    loadingView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"splash.png"]];
+    loadingView.frame = self.tableView.frame;
+    [loadingView setUserInteractionEnabled:NO];
+    [self.tableView addSubview:loadingView];
+    
+}
+
+-(void)setUpRefreshControl {
+    UIImageView *bgImageView = [[UIImageView alloc]initWithFrame:self.view.frame];
+    bgImageView.image = [UIImage imageNamed:@"tableview_bg.png"];
+    self.refreshControl = refresh;
+    [self.refreshControl addSubview:bgImageView];
+    [self.refreshControl sendSubviewToBack:bgImageView];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+}
+
 
 
 #pragma scrollview methods
@@ -220,8 +229,6 @@
 
 
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([segue.identifier isEqualToString:@"webViewSegue"]) {

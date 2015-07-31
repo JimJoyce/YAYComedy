@@ -7,7 +7,7 @@
 //
 
 #import "YCApi.h"
-#import "YCListViewControllerTableViewController.h"
+#import "YCListViewController.h"
 #import "AFNetworking.h"
 
 static NSString * const apiUrl = @"https://yaycomedy.herokuapp.com/api/articles";
@@ -23,7 +23,7 @@ static NSString * const apiUrl = @"https://yaycomedy.herokuapp.com/api/articles"
     return instance;
 }
 
--(void)fetchArticles:(YCListViewControllerTableViewController *)sender {
+-(void)fetchArticles:(YCListViewController *)sender {
     
     AFHTTPRequestOperationManager *requestManager = [AFHTTPRequestOperationManager manager];
     [requestManager GET:apiUrl parameters:NULL success:^(AFHTTPRequestOperation *successOperation, NSArray *responseObject) {
@@ -35,7 +35,7 @@ static NSString * const apiUrl = @"https://yaycomedy.herokuapp.com/api/articles"
     }];
 }
 
--(void)generateError:(YCListViewControllerTableViewController *)sender {
+-(void)generateError:(YCListViewController *)sender {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Server Error"
                                                                     message:@"Sorry! Something went wrong. Tap okay to try again."
                                                              preferredStyle:

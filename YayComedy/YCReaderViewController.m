@@ -7,6 +7,7 @@
 //
 
 #import "YCReaderViewController.h"
+#import "UIColor+Colors.h"
 
 @interface YCReaderViewController()<UIWebViewDelegate>
 
@@ -21,6 +22,9 @@
     [self.navigationController.navigationBar setBarTintColor:self.barColor];
     self.closeButton.tintColor = [UIColor whiteColor];
     self.navBar.title = self.sourceText;
+    if (self.barColor == [UIColor yayYellow]) {
+        self.navBar.titleView.tintColor = [UIColor blackColor];
+    }
     [self checkSource];
 }
 

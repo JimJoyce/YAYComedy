@@ -29,6 +29,7 @@ static NSString * const apiUrl = @"https://yaycomedy.herokuapp.com/api/articles"
     [requestManager GET:apiUrl parameters:NULL success:^(AFHTTPRequestOperation *successOperation, NSArray *responseObject) {
         self.articles = responseObject;
         [sender responseDone];
+        [sender.tableView setUserInteractionEnabled:YES];
         [sender.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *failOperation, NSError *error) {
         [self generateError:sender];

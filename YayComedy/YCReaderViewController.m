@@ -112,7 +112,12 @@
 }
 
 - (IBAction)showShareSheet:(id)sender {
-    UIActivityViewController *shareSheet = [[UIActivityViewController alloc]initWithActivityItems:@[] applicationActivities:nil];
+    NSURL *shareUrl = [NSURL URLWithString:self.articleUrl];
+    NSString *shareMessage = [NSString stringWithFormat:@"Via \@goyaycomedy"];
+    UIActivityViewController *shareSheet = [[UIActivityViewController alloc]
+                                            initWithActivityItems:@[shareMessage, shareUrl]
+                                            applicationActivities:@[]];
+    
     [self presentViewController:shareSheet animated:YES completion:nil];
 }
 

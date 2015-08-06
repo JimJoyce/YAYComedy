@@ -20,7 +20,7 @@
     UIButton *settingsIcon;
     UIImage *settingsImage;
     YCSettingsView *settingsPane;
-    UIView *darkenView;
+    UIButton *darkenView;
     UIButton *closeSettingsButton;
     UIColor *highlightedCellColor;
     BOOL yellowSelected;
@@ -72,9 +72,10 @@
                                    forState:UIControlStateNormal];
     closeSettingsButton.alpha = 0.0;
     [closeSettingsButton addTarget:self action:@selector(closeSettings) forControlEvents:UIControlEventTouchUpInside];
-    darkenView = [[UIView alloc]initWithFrame:self.tableView.frame];
+    darkenView = [[UIButton alloc]initWithFrame:self.tableView.frame];
     darkenView.backgroundColor = [UIColor blackColor];
     darkenView.alpha = 0.0;
+    [darkenView addTarget:self action:@selector(closeSettings) forControlEvents:UIControlEventTouchUpInside];
     [self.view.window addSubview:darkenView];
     [darkenView addSubview:closeSettingsButton];
     [self.view.window addSubview:settingsPane];
@@ -183,7 +184,9 @@
 -(void)setUpLoadingView {
     loadingView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"splash.png"]];
     loadingView.frame = self.tableView.frame;
+    [loadingView setContentMode:UIViewContentModeScaleAspectFill];
     [loadingView setUserInteractionEnabled:NO];
+    [self.tableView setUserInteractionEnabled:NO];
     [self.tableView addSubview:loadingView];
     
 }

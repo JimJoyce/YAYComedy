@@ -113,7 +113,7 @@
 
 - (IBAction)showShareSheet:(id)sender {
     NSURL *shareUrl = [NSURL URLWithString:self.articleUrl];
-    NSString *shareMessage = [NSString stringWithFormat:@"Via \@goyaycomedy"];
+    NSString *shareMessage = [NSString stringWithFormat:@"Via @goyaycomedy"];
     UIActivityViewController *shareSheet = [[UIActivityViewController alloc]
                                             initWithActivityItems:@[shareMessage, shareUrl]
                                             applicationActivities:@[]];

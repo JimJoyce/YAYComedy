@@ -14,6 +14,14 @@
 #import "YCSettingsView.h"
 #import "UIColor+Colors.h"
 
+typedef enum ScrollDirection {
+    ScrollDirectionNone,
+    ScrollDirectionUp,
+    ScrollDirectionDown,
+    ScrollDirectionLeft,
+    ScrollDirectionRight
+} ScrollDirection;
+
 @interface YCListViewController () <UIScrollViewDelegate> {
     YCApi *api;
     NSUInteger colorIndex;
@@ -24,7 +32,9 @@
     UIButton *closeSettingsButton;
     UIColor *highlightedCellColor;
     BOOL yellowSelected;
+    BOOL goingDown;
     UIImageView *loadingView;
+    ScrollDirection scrollDirection;
     
     __weak IBOutlet UIRefreshControl *refresh;
 }
@@ -37,6 +47,8 @@
     [super viewDidLoad];
     [self setUpLoadingView];
     colorIndex = -1;
+    goingDown = YES;
+    scrollDirection = ScrollDirectionDown;
     api = [YCApi sharedInstance];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self setUpRefreshControl];
@@ -132,6 +144,22 @@
 }
 
 -(NSUInteger)checkColorIndex {
+//    if (goingDown == YES) {
+//        colorIndex += 1;
+//        if (colorIndex == 5) {
+//            colorIndex -= 2;
+//            goingDown = NO;
+//            return colorIndex;
+//        }
+//        return colorIndex;
+//    } else {
+//        colorIndex -=1;
+//        if (colorIndex == -1) {
+//            colorIndex += 2;
+//            goingDown = YES;
+//            return colorIndex;
+//        }
+//    }
     colorIndex += 1;
     if (colorIndex == 4) {
         colorIndex = -1;
@@ -205,8 +233,15 @@
 #pragma scrollview methods
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self adjustSettingsViewOffest];
+    if (self.lastContentOffset > self.tableView.contentOffset.y) {
+        scrollDirection = ScrollDirectionUp;
+        goingDown = NO;
+    } else {
+        goingDown = YES;
+        scrollDirection = ScrollDirectionDown;
+    }
+    self.lastContentOffset = self.tableView.contentOffset.y;
 }
-
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
                        change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"frame"]) {

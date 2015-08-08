@@ -11,5 +11,6 @@
 @interface YCListViewController : UITableViewController
 
 -(void)responseDone;
+@property CGFloat lastContentOffset;
 
 @end

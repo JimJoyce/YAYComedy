@@ -144,27 +144,14 @@ typedef enum ScrollDirection {
 }
 
 -(NSUInteger)checkColorIndex {
-//    if (goingDown == YES) {
-//        colorIndex += 1;
-//        if (colorIndex == 5) {
-//            colorIndex -= 2;
-//            goingDown = NO;
-//            return colorIndex;
-//        }
-//        return colorIndex;
-//    } else {
-//        colorIndex -=1;
-//        if (colorIndex == -1) {
-//            colorIndex += 2;
-//            goingDown = YES;
-//            return colorIndex;
-//        }
-//    }
-    colorIndex += 1;
     if (colorIndex == 4) {
         colorIndex = -1;
-        return 4;
+        return 1;
+    } else {
+        colorIndex += 1;
+        return colorIndex;
     }
+    
     return colorIndex;
 }
 

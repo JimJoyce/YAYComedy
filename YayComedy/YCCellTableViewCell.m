@@ -36,7 +36,12 @@
 }
 
 -(void)configureCell:(NSUInteger)colorIndex withJson:(NSDictionary *)articleObject{
-    [self setColor:colorIndex];
+    if (self.cellColorIndex == nil) {
+        self.cellColorIndex = [NSNumber numberWithInteger:colorIndex] ;
+        [self setColor:[self.cellColorIndex integerValue]];
+    }else {
+        [self setColor:[self.cellColorIndex integerValue]];
+    }
     NSString *sourceString = [NSString stringWithFormat:@"via: %@",
                               [articleObject valueForKey:@"source"]];
     NSString *string = [[articleObject valueForKey:@"title"] stringByDecodingHTMLEntities];
@@ -45,6 +50,7 @@
 }
 
 -(void)setColor:(NSUInteger)colorIndex {
+    
     self.backgroundColor = [colors objectAtIndex:colorIndex];
     if (self.backgroundColor == [colors objectAtIndex:3]) {
         self.titleLabel.textColor = [UIColor blackColor];

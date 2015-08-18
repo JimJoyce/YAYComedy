@@ -11,6 +11,7 @@
 @interface YCCellTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sourceLabel;
+@property NSNumber *cellColorIndex;
 
 @property(strong, nonatomic)NSString *title;
 @property(strong, nonatomic)NSString *date;

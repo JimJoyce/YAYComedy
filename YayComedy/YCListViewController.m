@@ -72,13 +72,13 @@ typedef enum ScrollDirection {
                                       CGRectGetWidth(self.view.frame) * 0.80,
                                       CGRectGetHeight(self.view.frame) * 0.5);
     settingsFrame.origin.x = CGRectGetMidX(self.view.frame) * 0.20;
-    settingsFrame.origin.y = CGRectGetMidY(self.view.frame) * 0.50;
+    settingsFrame.origin.y = CGRectGetMidY(self.view.frame) * 0.40;
     settingsPane = [[YCSettingsView alloc]initWithFrame: settingsFrame];
     [settingsPane setUserInteractionEnabled:YES];
     [self.tableView setScrollEnabled:NO];
     CGFloat closeSize = self.view.frame.size.width * .2;
     closeSettingsButton = [[UIButton alloc]initWithFrame:
-                           CGRectMake(CGRectGetMidX(self.view.frame) - (closeSize * .45f),
+                           CGRectMake(CGRectGetMidX(self.view.frame) - (closeSize * .5f),
                            CGRectGetMaxY(self.view.frame) * 0.825, closeSize, closeSize)];
     
     

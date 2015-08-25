@@ -17,6 +17,6 @@
 @property(strong, nonatomic)NSString *date;
 @property(strong, nonatomic)NSString *articleUrl;
 @property(strong, nonatomic)NSString *source;
--(void)configureCell:(NSUInteger)colorIndex withJson:(NSDictionary *)articleObject;
+-(void)configureCell:(NSInteger)colorIndex withJson:(NSDictionary *)articleObject;
 
 @end

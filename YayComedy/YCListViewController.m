@@ -24,7 +24,7 @@ typedef enum ScrollDirection {
 
 @interface YCListViewController () <UIScrollViewDelegate> {
     YCApi *api;
-    NSUInteger colorIndex;
+    NSInteger colorIndex;
     UIButton *settingsIcon;
     UIImage *settingsImage;
     YCSettingsView *settingsPane;
@@ -76,11 +76,13 @@ typedef enum ScrollDirection {
     settingsPane = [[YCSettingsView alloc]initWithFrame: settingsFrame];
     [settingsPane setUserInteractionEnabled:YES];
     [self.tableView setScrollEnabled:NO];
+    CGFloat closeSize = self.view.frame.size.width * .2;
     closeSettingsButton = [[UIButton alloc]initWithFrame:
-                           CGRectMake(CGRectGetMidX(self.view.frame) - 20.0f,
-                           CGRectGetMaxY(self.view.frame) * 0.825, 40.0f, 40.0f)];
+                           CGRectMake(CGRectGetMidX(self.view.frame) - (closeSize * .45f),
+                           CGRectGetMaxY(self.view.frame) * 0.825, closeSize, closeSize)];
     
-    [closeSettingsButton setBackgroundImage:[UIImage imageNamed:@"close_button"]
+    
+    [closeSettingsButton setBackgroundImage:[UIImage imageNamed:@"close_settings_button"]
                                    forState:UIControlStateNormal];
     closeSettingsButton.alpha = 0.0;
     [closeSettingsButton addTarget:self action:@selector(closeSettings) forControlEvents:UIControlEventTouchUpInside];
@@ -143,13 +145,11 @@ typedef enum ScrollDirection {
     return cell;
 }
 
--(NSUInteger)checkColorIndex {
-    if (colorIndex == 4) {
-        colorIndex = -1;
-        return 1;
-    } else {
-        colorIndex += 1;
-        return colorIndex;
+-(NSInteger)checkColorIndex {
+    colorIndex += 1;
+    if (colorIndex == 5) {
+        colorIndex = 1;
+        return 5;
     }
     
     return colorIndex;

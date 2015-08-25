@@ -20,10 +20,12 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
     colors = @[[UIColor yayLightRed],
                [UIColor yayLightBlue],
-               [UIColor yayPurple],
+               [UIColor yayDarkRed],
                [UIColor yayYellow],
+               [UIColor yayPurple],
                [UIColor yayTurquoise]];
 
     self.titleLabel.font = [UIFont fontWithName:@"LoveloBlack" size:18];
@@ -35,13 +37,11 @@
     [super setSelected:selected animated:animated];
 }
 
--(void)configureCell:(NSUInteger)colorIndex withJson:(NSDictionary *)articleObject{
+-(void)configureCell:(NSInteger)colorIndex withJson:(NSDictionary *)articleObject {
     if (self.cellColorIndex == nil) {
-        self.cellColorIndex = [NSNumber numberWithInteger:colorIndex] ;
-        [self setColor:[self.cellColorIndex integerValue]];
-    }else {
-        [self setColor:[self.cellColorIndex integerValue]];
+        self.cellColorIndex = [NSNumber numberWithInteger:colorIndex];
     }
+    [self setColor];
     NSString *sourceString = [NSString stringWithFormat:@"via: %@",
                               [articleObject valueForKey:@"source"]];
     NSString *string = [[articleObject valueForKey:@"title"] stringByDecodingHTMLEntities];
@@ -49,10 +49,9 @@
     self.sourceLabel.text = sourceString;
 }
 
--(void)setColor:(NSUInteger)colorIndex {
-    
-    self.backgroundColor = [colors objectAtIndex:colorIndex];
-    if (self.backgroundColor == [colors objectAtIndex:3]) {
+-(void)setColor{
+    self.backgroundColor = [colors objectAtIndex:[self.cellColorIndex intValue]];
+    if ([self.backgroundColor isEqual:[UIColor yayYellow]]) {
         self.titleLabel.textColor = [UIColor blackColor];
         self.sourceLabel.textColor = [UIColor blackColor];
     } else {

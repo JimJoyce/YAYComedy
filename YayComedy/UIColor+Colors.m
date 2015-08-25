@@ -30,4 +30,15 @@
     return [UIColor colorWithRed:65.0f/255.0f green:148.0f/255.0f blue:144.0f/255.0f alpha:1.0f];
 }
 
++(UIColor *) yayDarkRed {
+    return [UIColor colorWithRed:189.0f/255.0f green:0.0f/255.0f blue:125.0f/255.0f alpha:1.0f];
+}
+
++(UIColor *) yayDarkBlue {
+    return [UIColor colorWithRed:0.0f/255.0f green:97.0f/255.0f blue:106.0f/255.0f alpha:1.0f];
+}
++(UIColor *) yayDarkTurquoise {
+    return [UIColor colorWithRed:0.0f/255.0f green:190.0f/255.0f blue:165.0f/255.0f alpha:1.0f];
+}
+
 @end

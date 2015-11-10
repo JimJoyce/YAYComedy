@@ -8,8 +8,17 @@
 
 #import "AppDelegate.h"
 #import "YCApi.h"
+#import <Security/Security.h>
+#import "KeychainWrapper.h"
+#import "YCUser.h"
+#import "YCListViewController.h"
+#import "YCLoadingView.h"
 
-@interface AppDelegate ()
+
+@interface AppDelegate () {
+  YCLoginViewController *rootViewController;
+  YCLoadingView *loadingView;
+}
 
 @end
 
@@ -17,22 +26,29 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [self makeApiCall];
     [self setUpAppearance];
+  YCListViewController *rootView = (YCListViewController *)self.window.rootViewController;
+    KeychainWrapper *keychain = [KeychainWrapper sharedInstance];
+    if ([keychain checkKeychainForExistingPassword]) {
+        NSDictionary *userRecord = [keychain fetchUserDetails];
+        [[YCUser sharedInstance] setProperties:userRecord];
+        YCApi *api = [YCApi sharedInstance];
+        [api loginWithKeychain:userRecord success:^(BOOL requestFinished) {
+            if (requestFinished) {
+              [api setDidLogin:YES];
+              [api fetchArticles:rootView];
+            }
+        }];
+      return YES;
+    }
+  [[YCApi sharedInstance] fetchArticles:rootView];
     return YES;
 }
-
 -(void)setUpAppearance {
     UINavigationBar *navBarAppearance = [UINavigationBar appearance];
     UIFont *mainFont = [UIFont fontWithName:@"LoveloBlack" size:25.0f];
-    
     [navBarAppearance setTitleTextAttributes:@{NSFontAttributeName : mainFont,
                                                NSForegroundColorAttributeName: [UIColor whiteColor]}];
-}
-
--(void)makeApiCall {
-    YCApi *api = [YCApi sharedInstance];
-    [api fetchArticles:(YCListViewController *)self.window.rootViewController];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

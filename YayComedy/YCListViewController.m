@@ -13,6 +13,8 @@
 #import "NSString+HTML.h"
 #import "YCSettingsView.h"
 #import "UIColor+Colors.h"
+#import "YCLoadingView.h"
+
 
 typedef enum ScrollDirection {
     ScrollDirectionNone,
@@ -33,7 +35,7 @@ typedef enum ScrollDirection {
     UIColor *highlightedCellColor;
     BOOL yellowSelected;
     BOOL goingDown;
-    UIImageView *loadingView;
+    YCLoadingView *loadingView;
     ScrollDirection scrollDirection;
     
     __weak IBOutlet UIRefreshControl *refresh;
@@ -45,9 +47,10 @@ typedef enum ScrollDirection {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUpLoadingView];
     colorIndex = -1;
     goingDown = YES;
+    loadingView = [YCLoadingView sharedInstance];
+    [self.tableView addSubview:loadingView];
     scrollDirection = ScrollDirectionDown;
     api = [YCApi sharedInstance];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -57,12 +60,16 @@ typedef enum ScrollDirection {
                      forKeyPath:@"frame"
                         options:0
                         context:NULL];
+  
 }
 
 -(void)responseDone {
     if (loadingView) {
-        [loadingView removeFromSuperview];
+        [loadingView removeFromContext];
         [self.tableView addSubview:settingsIcon];
+      [UIView animateWithDuration:.5f delay:.5f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        settingsIcon.alpha = 0.8;
+      } completion:nil];
     }
 }
 
@@ -140,7 +147,8 @@ typedef enum ScrollDirection {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     YCCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     [cell configureCell:[self checkColorIndex]
-               withJson:[api.articles objectAtIndex:indexPath.row]];
+               withJson:[api.articles objectAtIndex:indexPath.row] arrayPos:indexPath.row];
+  
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
@@ -192,18 +200,18 @@ typedef enum ScrollDirection {
     
     settingsIcon = [[UIButton alloc]initWithFrame:settingsPos];
     [settingsIcon setBackgroundImage:settingsImage forState:UIControlStateNormal];
-    settingsIcon.alpha = 0.8;
+    settingsIcon.alpha = 0.0;
     [settingsIcon addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void)setUpLoadingView {
-    loadingView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"splash.png"]];
-    loadingView.frame = self.tableView.frame;
-    [loadingView setContentMode:UIViewContentModeScaleAspectFill];
-    [loadingView setUserInteractionEnabled:NO];
-    [self.tableView setUserInteractionEnabled:NO];
-    [self.tableView addSubview:loadingView];
-    
+//    loadingView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"splash.png"]];
+//    loadingView.frame = self.tableView.frame;
+//    [loadingView setContentMode:UIViewContentModeScaleAspectFill];
+//    [loadingView setUserInteractionEnabled:NO];
+//    [self.tableView setUserInteractionEnabled:NO];
+//    [self.tableView addSubview:loadingView];
+  
 }
 
 -(void)setUpRefreshControl {
@@ -264,6 +272,11 @@ typedef enum ScrollDirection {
         dvc.barColor = cell.backgroundColor;
         dvc.articleUrl = [[api.articles objectAtIndex:indexPath.row] valueForKey:@"article_link"];
         dvc.sourceText = [[api.articles objectAtIndex:indexPath.row] valueForKey:@"source"];
+    } else if ([segue.identifier isEqualToString:@"loginSegue"]) {
+      
+      
+      
+      
     }
 }
 

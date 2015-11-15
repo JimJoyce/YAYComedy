@@ -10,6 +10,7 @@
 		CC47E68E1B5495B5006E6E2B /* YCSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC47E68D1B5495B5006E6E2B /* YCSettingsView.m */; };
 		CC7690F41B4F22A700553053 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7690F31B4F22A700553053 /* NSString+HTML.m */; };
 		CC7690F71B4F238E00553053 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7690F61B4F238E00553053 /* GTMNSString+HTML.m */; };
+		CC95C2501BF2500F0086D01B /* YCSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC95C24F1BF2500F0086D01B /* YCSettingsTableViewController.m */; };
 		CCA9D8791B476CD0003C6E49 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9D8781B476CD0003C6E49 /* main.m */; };
 		CCA9D87C1B476CD0003C6E49 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9D87B1B476CD0003C6E49 /* AppDelegate.m */; };
 		CCA9D8821B476CD0003C6E49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCA9D8801B476CD0003C6E49 /* Main.storyboard */; };
@@ -41,6 +42,11 @@
 		CCDFC1D21B4DF1FC00991651 /* Lovelo Line Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CCDFC1CE1B4DF11300991651 /* Lovelo Line Bold.otf */; };
 		CCDFC1D31B4DF1FC00991651 /* Lovelo Line Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = CCDFC1CF1B4DF11300991651 /* Lovelo Line Light.otf */; };
 		CCDFC1D61B4DF93900991651 /* YCReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDFC1D51B4DF93900991651 /* YCReaderViewController.m */; };
+		CCED17ED1BEA6A60009C4EA9 /* YCLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCED17EC1BEA6A60009C4EA9 /* YCLoadingView.m */; };
+		CCF880E91BE9AB0F009B062B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF880E81BE9AB0F009B062B /* Security.framework */; };
+		CCF880F21BE9D5AF009B062B /* YCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF880F11BE9D5AF009B062B /* YCLoginViewController.m */; };
+		CCF880F51BE9F0CE009B062B /* YCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF880F41BE9F0CE009B062B /* YCUser.m */; };
+		CCF880F81BEA1EEB009B062B /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF880F71BEA1EEB009B062B /* KeychainWrapper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +66,8 @@
 		CC7690F31B4F22A700553053 /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
 		CC7690F51B4F238E00553053 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		CC7690F61B4F238E00553053 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
+		CC95C24E1BF2500F0086D01B /* YCSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCSettingsTableViewController.h; sourceTree = "<group>"; };
+		CC95C24F1BF2500F0086D01B /* YCSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCSettingsTableViewController.m; sourceTree = "<group>"; };
 		CCA9D8731B476CD0003C6E49 /* YayComedy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YayComedy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA9D8771B476CD0003C6E49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCA9D8781B476CD0003C6E49 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -120,6 +128,15 @@
 		CCDFC1CF1B4DF11300991651 /* Lovelo Line Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lovelo Line Light.otf"; sourceTree = "<group>"; };
 		CCDFC1D41B4DF93900991651 /* YCReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCReaderViewController.h; sourceTree = "<group>"; };
 		CCDFC1D51B4DF93900991651 /* YCReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCReaderViewController.m; sourceTree = "<group>"; };
+		CCED17EB1BEA6A60009C4EA9 /* YCLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCLoadingView.h; sourceTree = "<group>"; };
+		CCED17EC1BEA6A60009C4EA9 /* YCLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCLoadingView.m; sourceTree = "<group>"; };
+		CCF880E81BE9AB0F009B062B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		CCF880F01BE9D5AF009B062B /* YCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCLoginViewController.h; sourceTree = "<group>"; };
+		CCF880F11BE9D5AF009B062B /* YCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCLoginViewController.m; sourceTree = "<group>"; };
+		CCF880F31BE9F0CE009B062B /* YCUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCUser.h; sourceTree = "<group>"; };
+		CCF880F41BE9F0CE009B062B /* YCUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCUser.m; sourceTree = "<group>"; };
+		CCF880F61BEA1EEB009B062B /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
+		CCF880F71BEA1EEB009B062B /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCF880E91BE9AB0F009B062B /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +166,7 @@
 				CCA9D8741B476CD0003C6E49 /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		CCA9D8741B476CD0003C6E49 /* Products */ = {
 			isa = PBXGroup;
@@ -164,14 +183,22 @@
 				CCDFC1D01B4DF11700991651 /* Resources */,
 				CCA9D8D61B476E59003C6E49 /* YCApi.h */,
 				CCA9D8D71B476E59003C6E49 /* YCApi.m */,
+				CCED17EB1BEA6A60009C4EA9 /* YCLoadingView.h */,
+				CCED17EC1BEA6A60009C4EA9 /* YCLoadingView.m */,
+				CCF880F31BE9F0CE009B062B /* YCUser.h */,
+				CCF880F41BE9F0CE009B062B /* YCUser.m */,
 				CC47E68C1B5495B5006E6E2B /* YCSettingsView.h */,
 				CC47E68D1B5495B5006E6E2B /* YCSettingsView.m */,
+				CC95C24E1BF2500F0086D01B /* YCSettingsTableViewController.h */,
+				CC95C24F1BF2500F0086D01B /* YCSettingsTableViewController.m */,
 				CCA9D8D91B477133003C6E49 /* YCCellTableViewCell.h */,
 				CCA9D8DA1B477133003C6E49 /* YCCellTableViewCell.m */,
 				CCA9D8D31B476DA8003C6E49 /* YCListViewController.h */,
 				CCA9D8D41B476DA8003C6E49 /* YCListViewController.m */,
 				CCDFC1D41B4DF93900991651 /* YCReaderViewController.h */,
 				CCDFC1D51B4DF93900991651 /* YCReaderViewController.m */,
+				CCF880F01BE9D5AF009B062B /* YCLoginViewController.h */,
+				CCF880F11BE9D5AF009B062B /* YCLoginViewController.m */,
 				CCA9D87A1B476CD0003C6E49 /* AppDelegate.h */,
 				CCA9D87B1B476CD0003C6E49 /* AppDelegate.m */,
 				CCA9D8801B476CD0003C6E49 /* Main.storyboard */,
@@ -261,6 +288,9 @@
 		CCDFC1D01B4DF11700991651 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CCF880F61BEA1EEB009B062B /* KeychainWrapper.h */,
+				CCF880F71BEA1EEB009B062B /* KeychainWrapper.m */,
+				CCF880E81BE9AB0F009B062B /* Security.framework */,
 				CCA9D89C1B476D75003C6E49 /* AFNetworking */,
 				CCA9D8B01B476D75003C6E49 /* UIKit+AFNetworking */,
 				CCDFC1CA1B4DDE4A00991651 /* UIColor+Colors.h */,
@@ -383,17 +413,22 @@
 				CCA9D8DB1B477133003C6E49 /* YCCellTableViewCell.m in Sources */,
 				CCA9D8C21B476D75003C6E49 /* AFHTTPRequestOperation.m in Sources */,
 				CC47E68E1B5495B5006E6E2B /* YCSettingsView.m in Sources */,
+				CCED17ED1BEA6A60009C4EA9 /* YCLoadingView.m in Sources */,
 				CC7690F71B4F238E00553053 /* GTMNSString+HTML.m in Sources */,
 				CCA9D8CF1B476D75003C6E49 /* UIImageView+AFNetworking.m in Sources */,
 				CCDFC1D61B4DF93900991651 /* YCReaderViewController.m in Sources */,
 				CCA9D8C31B476D75003C6E49 /* AFHTTPRequestOperationManager.m in Sources */,
 				CCA9D8D51B476DA8003C6E49 /* YCListViewController.m in Sources */,
 				CCA9D8D01B476D75003C6E49 /* UIProgressView+AFNetworking.m in Sources */,
+				CCF880F81BEA1EEB009B062B /* KeychainWrapper.m in Sources */,
 				CCA9D8C51B476D75003C6E49 /* AFNetworkReachabilityManager.m in Sources */,
 				CCA9D8C91B476D75003C6E49 /* AFURLResponseSerialization.m in Sources */,
 				CCA9D8C71B476D75003C6E49 /* AFURLConnectionOperation.m in Sources */,
+				CC95C2501BF2500F0086D01B /* YCSettingsTableViewController.m in Sources */,
 				CCA9D8CE1B476D75003C6E49 /* UIButton+AFNetworking.m in Sources */,
 				CCA9D8CC1B476D75003C6E49 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				CCF880F21BE9D5AF009B062B /* YCLoginViewController.m in Sources */,
+				CCF880F51BE9F0CE009B062B /* YCUser.m in Sources */,
 				CCA9D8C61B476D75003C6E49 /* AFSecurityPolicy.m in Sources */,
 				CCDFC1CC1B4DDE4A00991651 /* UIColor+Colors.m in Sources */,
 				CCA9D8D11B476D75003C6E49 /* UIRefreshControl+AFNetworking.m in Sources */,

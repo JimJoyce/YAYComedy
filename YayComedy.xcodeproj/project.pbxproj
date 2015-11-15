@@ -10,6 +10,7 @@
 		CC47E68E1B5495B5006E6E2B /* YCSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC47E68D1B5495B5006E6E2B /* YCSettingsView.m */; };
 		CC7690F41B4F22A700553053 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7690F31B4F22A700553053 /* NSString+HTML.m */; };
 		CC7690F71B4F238E00553053 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7690F61B4F238E00553053 /* GTMNSString+HTML.m */; };
+		CC95C2501BF2500F0086D01B /* YCSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC95C24F1BF2500F0086D01B /* YCSettingsTableViewController.m */; };
 		CCA9D8791B476CD0003C6E49 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9D8781B476CD0003C6E49 /* main.m */; };
 		CCA9D87C1B476CD0003C6E49 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCA9D87B1B476CD0003C6E49 /* AppDelegate.m */; };
 		CCA9D8821B476CD0003C6E49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCA9D8801B476CD0003C6E49 /* Main.storyboard */; };
@@ -65,6 +66,8 @@
 		CC7690F31B4F22A700553053 /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
 		CC7690F51B4F238E00553053 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		CC7690F61B4F238E00553053 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
+		CC95C24E1BF2500F0086D01B /* YCSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCSettingsTableViewController.h; sourceTree = "<group>"; };
+		CC95C24F1BF2500F0086D01B /* YCSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCSettingsTableViewController.m; sourceTree = "<group>"; };
 		CCA9D8731B476CD0003C6E49 /* YayComedy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YayComedy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA9D8771B476CD0003C6E49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCA9D8781B476CD0003C6E49 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -186,6 +189,8 @@
 				CCF880F41BE9F0CE009B062B /* YCUser.m */,
 				CC47E68C1B5495B5006E6E2B /* YCSettingsView.h */,
 				CC47E68D1B5495B5006E6E2B /* YCSettingsView.m */,
+				CC95C24E1BF2500F0086D01B /* YCSettingsTableViewController.h */,
+				CC95C24F1BF2500F0086D01B /* YCSettingsTableViewController.m */,
 				CCA9D8D91B477133003C6E49 /* YCCellTableViewCell.h */,
 				CCA9D8DA1B477133003C6E49 /* YCCellTableViewCell.m */,
 				CCA9D8D31B476DA8003C6E49 /* YCListViewController.h */,
@@ -419,6 +424,7 @@
 				CCA9D8C51B476D75003C6E49 /* AFNetworkReachabilityManager.m in Sources */,
 				CCA9D8C91B476D75003C6E49 /* AFURLResponseSerialization.m in Sources */,
 				CCA9D8C71B476D75003C6E49 /* AFURLConnectionOperation.m in Sources */,
+				CC95C2501BF2500F0086D01B /* YCSettingsTableViewController.m in Sources */,
 				CCA9D8CE1B476D75003C6E49 /* UIButton+AFNetworking.m in Sources */,
 				CCA9D8CC1B476D75003C6E49 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				CCF880F21BE9D5AF009B062B /* YCLoginViewController.m in Sources */,

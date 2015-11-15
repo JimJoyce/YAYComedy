@@ -201,7 +201,11 @@ typedef enum ScrollDirection {
     settingsIcon = [[UIButton alloc]initWithFrame:settingsPos];
     [settingsIcon setBackgroundImage:settingsImage forState:UIControlStateNormal];
     settingsIcon.alpha = 0.0;
-    [settingsIcon addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
+    [settingsIcon addTarget:self action:@selector(openSettingsStoryboard) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)openSettingsStoryboard {
+  [self performSegueWithIdentifier:@"settingsSegue" sender:self];
 }
 
 -(void)setUpLoadingView {
